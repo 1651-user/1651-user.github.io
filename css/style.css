@@ -1,0 +1,103 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
+body { 
+  margin: 0;
+  background-color: #000;
+  color: #00ffae;
+  font-family: 'Fira Code', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#matrixCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #000;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
+}
+
+
+.terminal {
+  font-size: 1.5rem;
+  background-color: rgba(26, 28, 41, 0.85);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0,255,174,0.5);
+  max-width: 600px;
+  width: 100%;
+  backdrop-filter: blur(5px);
+  font-family: 'Rubik Glitch', 'Fira Code', monospace;
+  animation: glitch 1.5s infinite;
+  text-align: center;
+}
+
+
+.typed-text {
+  display: inline-block;
+  line-height: 1.6;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  25% { transform: translate(0.5px, -0.5px); }
+  50% { transform: translate(-0.5px, 0.5px); }
+  75% { transform: translate(0.3px, -0.3px); }
+  100% { transform: translate(0); }
+}
+
+.projects {
+  display: none;
+  padding: 4rem 2rem;
+  background-color: #0a0a0a;
+  color: #00ffae;
+  font-family: 'Fira Code', monospace;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.project-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: rgba(26, 28, 41, 0.85);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,255,174,0.3);
+  margin-top: 2rem;
+  backdrop-filter: blur(5px);
+  animation: glitch 1.5s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
