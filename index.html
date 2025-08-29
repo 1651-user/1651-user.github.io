@@ -254,11 +254,25 @@
   transform: scale(1.2);
   filter: drop-shadow(0 0 8px #00ffae);
 }
+#typing-text {
+  white-space: pre-line;
+  word-wrap: break-word;
+  text-align: center;
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 480px) {
-  #typed {
+  #typing-text {
     font-size: 1.2rem;
   }
 }
+
+.social-icons img:hover {
+  transform: scale(1.2) rotate(1deg);
+  filter: drop-shadow(0 0 10px #00ffee);
+}
+
 
 
 
@@ -317,7 +331,7 @@
         <img src="https://cdn.simpleicons.org/flutter/003B57" alt="Flutter">
       </div>
     </section>
-  </main>git
+  </main>
 
  <footer class="skills-footer child">
   <p>&copy; 2025 Sravya Isukapatla | <a href="#">All Rights Reserved.</a></p>
@@ -335,59 +349,63 @@
 </footer>
 
 
-  <script>
-    // Typing effect
-    const text = "Hello ,This is Sravya Isukapatla A Frontend Developer,a Computer Science Enthusiast ";
-    let i = 0;
+<script>
+  // ✨ Typing effect with line breaks
+  const text = "Hello,\nThis is Sravya Isukapatla\nA Frontend Developer,\na Computer Science Enthusiast";
+  let i = 0;
 
-    function typeLine() {
-      if (i < text.length) {
-        document.getElementById("typing-text").textContent += text.charAt(i);
-        i++;
-        setTimeout(typeLine, 80);
+  function typeLine() {
+    if (i < text.length) {
+      const char = text.charAt(i);
+      if (char === "\n") {
+        document.getElementById("typing-text").innerHTML += "<br>";
+      } else {
+        document.getElementById("typing-text").innerHTML += char;
       }
+      i++;
+      setTimeout(typeLine, 80);
     }
+  }
 
-    // Section reveal
-    function showSection(sectionId) {
-      const section = document.getElementById(sectionId);
-      section.classList.add("active");
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+  // 📦 Section reveal
+  function showSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.classList.add("active");
+    section.scrollIntoView({ behavior: "smooth" });
+  }
 
-    // Matrix effect
-    const canvas = document.getElementById("matrixCanvas");
-    const ctx = canvas.getContext("2d");
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+  // 💻 Matrix effect
+  const canvas = document.getElementById("matrixCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
 
-    const letters = "01";
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
+  const letters = "01";
+  const fontSize = 14;
+  const columns = canvas.width / fontSize;
+  const drops = Array(Math.floor(columns)).fill(1);
 
-    function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#00ffcc";
-      ctx.font = fontSize + "px monospace";
+  function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#00ffcc";
+    ctx.font = fontSize + "px monospace";
 
-      for (let j = 0; j < drops.length; j++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, j * fontSize, drops[j] * fontSize);
+    for (let j = 0; j < drops.length; j++) {
+      const text = letters.charAt(Math.floor(Math.random() * letters.length));
+      ctx.fillText(text, j * fontSize, drops[j] * fontSize);
 
-        if (drops[j] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[j] = 0;
-        }
-        drops[j]++;
+      if (drops[j] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[j] = 0;
       }
+      drops[j]++;
     }
-    setInterval(drawMatrix, 33);
+  }
 
-    window.onload = () => {
-      typeLine();
-      drawMatrix();
-    };
-  </script>
-</body>
-</html>
+  setInterval(drawMatrix, 33);
+
+  window.onload = () => {
+    typeLine();
+    drawMatrix();
+  };
+</script>
