@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sravya Isukapatla | Portfolio</title>
   <style>
+    /* ==== GLOBAL ==== */
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Poppins", sans-serif;
       background-color: black;
-      color: #00ffcc;
+      color: #00fff2;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
+    /* ==== MATRIX BACKGROUND ==== */
     #matrixCanvas {
       position: fixed;
       top: 0;
@@ -23,29 +28,74 @@
       height: 100%;
     }
 
-    .snap-wrapper {
-      scroll-snap-type: y mandatory;
-    }
-
-    .container,
-    .projects,
-    .skills {
-      scroll-snap-align: start;
-      min-height: 100vh;
+    /* ==== NAVBAR ==== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 40px;
+      gap: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      padding: 15px 0;
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(0, 255, 242, 0.3);
     }
 
-    .intro {
+    nav a {
+      text-decoration: none;
+      color: #00fff2;
+      font-weight: 500;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #00fff2;
+    }
+
+    /* ==== SECTIONS ==== */
+    section {
+      min-height: 100vh;
+      padding: 80px 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ==== INTRO ==== */
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(0, 255, 242, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 242, 0.3);
+      padding: 30px;
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s forwards;
+      min-height: 400px; /* Set a smaller fixed minimum height */
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .typing {
-      font-size: 2em;
-      border-right: 2px solid #00ffcc;
+      font-size: 1.8em;
+      border-right: 3px solid #00fff2;
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
@@ -57,355 +107,368 @@
     }
 
     .btn {
-      margin-top: 20px;
+      margin: 15px 10px;
       padding: 10px 20px;
-      border: 2px solid #00ffcc;
-      color: #00ffcc;
-      background: transparent;
+      border: none;
+      color: #00fff2;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
       cursor: pointer;
-      transition: background 0.3s, color 0.3s;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 10px rgba(0, 255, 242, 0.3);
     }
 
     .btn:hover {
-      background: #00ffcc;
+      background: #00fff2;
       color: black;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00fff2;
     }
 
-    /* Hide initially */
-    .projects,
-    .skills {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    .projects.active,
-    .skills.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* --- Projects --- */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      width: 100%;
+    /* ==== PROJECTS ==== */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(0, 255, 242, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 242, 0.3);
+      padding: 40px;
+      width: 90%;
       max-width: 900px;
-      margin-top: 20px;
-    }
-    .project-card {
-      border: 1px solid #00ffcc;
-      padding: 20px;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.6);
-      transition: transform 0.3s;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
+      margin: 40px auto;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s forwards;
     }
 
-    /* --- Skills --- */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* ==== PROJECT BLOCKS ==== */
+    .project-section {
+      display: flex;
+      justify-content: center;
       gap: 20px;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 800px;
-      text-align: center;
+      flex-wrap: wrap;
+      padding: 20px;
     }
-    .skill-box {
-      border: 1px solid #00ffcc;
+
+    .project-block {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(0, 255, 242, 0.3);
+      border-radius: 10px;
       padding: 15px;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.6);
+      width: 300px;
+      text-align: left;
+      color: #00fff2;
     }
 
-    .skills-footer {
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 10px;
-      text-align: center;
+    .project-block h4 {
+      margin: 0 0 10px 0;
+      color: #00fff2;
+    }
+
+    .project-block p {
+      margin: 5px 0;
+      color: #d8fdf9;
+    }
+
+    .project-block .status {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #00fff2;
+      color: black;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .project-block .tech {
+      color: #00fff2;
       font-size: 0.9em;
-      color: #00ffcc;
     }
 
-    .skills-footer a {
-      color: #00ffcc;
+    .project-block .links a {
+      margin-right: 10px;
+      color: #00fff2;
       text-decoration: none;
     }
-  /* Skills Section */
-.skills {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
-  border-radius: 10px;
-  padding: 40px;
-  width: 45%;
-  margin: auto;
-  box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
-  transition: transform 0.3s ease-in-out;
-}
 
-.skills:hover {
-  transform: scale(1.02);
-}
+    .project-block .links a:hover {
+      text-decoration: underline;
+    }
 
-.skills h1 {
-  font-size: 2.5em;
-  color: #00ffcc;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px #00ffcc;
-}
+    /* ==== SKILLS ==== */
+    .skills {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(0, 255, 242, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 242, 0.3);
+      padding: 40px;
+      width: 90%;
+      max-width: 900px;
+      margin: 40px auto;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s forwards;
+    }
 
-.skills ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 30px auto;
-  max-width: 700px;
-  font-size: 1.2em;
-  line-height: 1.8;
-  text-align: left;
-}
+    /* ==== SKILLS ICONS ==== */
+    .skill-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
 
-.skills li {
-  margin: 8px 0;
-  position: relative;
-  padding-left: 25px;
-}
+    .skill-icons img {
+      height: 45px;
+      width: 45px;
+      filter: drop-shadow(0 0 8px #00fff2);
+      transition: transform 0.3s, filter 0.3s;
+    }
 
-.skills li::before {
-  content: "➤";
-  position: absolute;
-  left: 0;
-  color: #00ffcc;
-  font-size: 1em;
-}
+    .skill-icons img:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 15px #00fff2);
+    }
 
-.skills div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
+    /* ==== FOOTER ==== */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+      color: #00fff2;
+      font-size: 0.9em;
+      border-top: 1px solid rgba(0, 255, 242, 0.3);
+    }
 
-.skills img {
-  height: 50px;
-  width: 50px;
-  filter: drop-shadow(0 0 5px #00ffcc);
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
+    .social-icons {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
 
-.skills img:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 10px #00ffee);
-}
+    .social-icons img {
+      width: 28px;
+      height: 28px;
+      filter: drop-shadow(0 0 5px #00fff2);
+      transition: transform 0.3s, filter 0.3s;
+    }
 
-/* Projects Section */
-.projects {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
-  border-radius: 20px;
-  padding: 40px;
-  width: 45%;
-  margin: 50px auto;
-  box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
-  transition: transform 0.3s ease-in-out;
-}
+    .social-icons img:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 10px #00fff2);
+    }
 
-.projects:hover {
-  transform: scale(1.02);
-}
+    /* ==== RESPONSIVE DESIGN ==== */
+    @media (max-width: 768px) {
+      .intro, .projects, .skills {
+        width: 95%;
+        padding: 20px;
+      }
+      .project-block {
+        width: 100%;
+      }
+    }
 
-.projects h1 {
-  font-size: 2.5em;
-  color: #00ffcc;
-  margin-bottom: 20px;
-  text-align: center;
-  text-shadow: 0 0 10px #00ffcc;
-}
-
-.projects h3 {
-  font-size: 1.8em;
-  margin-bottom: 15px;
-  color:#00ffcc;
-  text-shadow: 0 0 6px #00ffcc;
-}
-
-.projects p {
-  font-size: 1.1em;
-  line-height: 1.7;
-  color: #e0e0e0;
-  margin-bottom: 15px;
-}
-
-.social-icons {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.social-icons img {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-  filter: drop-shadow(0 0 4px #00ffae);
-}
-
-.social-icons img:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 8px #00ffae);
-}
-#typing-text {
-  white-space: pre-line;
-  word-wrap: break-word;
-  text-align: center;
-  font-size: 1.8rem;
-  line-height: 1.6;
-}
-
-@media (max-width: 480px) {
-  #typing-text {
-    font-size: 1.2rem;
-  }
-}
-
-.social-icons img:hover {
-  transform: scale(1.2) rotate(1deg);
-  filter: drop-shadow(0 0 10px #00ffee);
-}
-
-
-
-
-    
+    @media (max-width: 480px) {
+      .intro, .projects, .skills {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+      }
+      .intro h1, .projects h1, .skills h1 {
+        font-size: 2rem;
+      }
+      .project-block {
+        width: 100%;
+      }
+      .skill-icons img {
+        height: 35px;
+        width: 35px;
+      }
+      .social-icons img {
+        width: 20px;
+        height: 20px;
+      }
+    }
   </style>
 </head>
 <body>
   <canvas id="matrixCanvas"></canvas>
 
-  <main class="snap-wrapper">
-    <div class="container">
-      <div class="intro">
-        <span id="typing-text" class="typing"></span>
-        <br>
-        <button class="btn" onclick="showSection('projects')">View Projects</button>
-        <button class="btn" onclick="showSection('skills')">View Skills</button>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home" class="intro">
+    <span id="typing-text" class="typing"></span>
+    <div>
+      <button class="btn" onclick="scrollToSection('projects')">View Projects</button>
+      <button class="btn" onclick="scrollToSection('skills')">View Skills</button>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <h1>Projects</h1>
+    <div class="project-section">
+      <div class="project-block">
+        <h4>Borderly Visa Website Project <span class="status">Live</span></h4>
+        <p>Designed and implemented a full-stack web application to streamline the visa application process. Focused on user authentication, document upload security, and providing a secure, efficient portal for application tracking and requirement viewing.</p>
+        <p class="tech">JavaScript, Supabase, Database Design, Access Control</p>
+        <div class="links">
+          <a href="#">Code</a>
+          <a href="#">Demo</a>
+        </div>
+      </div>
+      <div class="project-block">
+        <h4>NPTEL Certification in Ethical Hacking <span class="status">Production</span></h4>
+        <p>Successfully completed an advanced NPTEL course on Ethical Hacking, demonstrating proficiency in systematic vulnerability assessment, network defense strategies, and application security best practices.</p>
+        <p class="tech">Vulnerability Assessment, Network Security, Web Application Pentesting, Security Auditing</p>
+        <div class="links">
+          <a href="#">Code</a>
+          <a href="#">Demo</a>
+        </div>
+      </div>
+      <div class="project-block">
+        <h4>Drone Security Workshop (Pondicherry University) <span class="status">Production</span></h4>
+        <p>Participated in a hands-on workshop focused on the cybersecurity and penetration testing of Unmanned Aerial Systems (UAS), leveraging the facilities at Pondicherry University. Gained practical experience in securing RF/MAVLink communication protocols.</p>
+        <p class="tech">Kali Linux, Network Analysis, UAV Protocols, Firmware Analysis, IoT Security</p>
+        <div class="links">
+          <a href="#">Code</a>
+          <a href="#">Demo</a>
+        </div>
+      </div>
+      <div class="project-block">
+        <h4>ONGC Internship <span class="status">Production</span></h4>
+        <p>Completed industrial training at ONGC (Oil and Natural Gas Corporation), focusing on Data Analysis. Achieved a script that automated data logging and improved reporting time by 15%.</p>
+        <p class="tech">Python, SCADA, Process Engineering, Technical Report Writing</p>
+        <div class="links">
+          <a href="#">Code</a>
+          <a href="#">Demo</a>
+        </div>
+      </div>
+      <div class="project-block">
+        <h4>ISRO AI/ML Project Initiative <span class="status">Production</span></h4>
+        <p>Developed and implemented a Machine Learning model for Satellite Image Classification as part of an ISRO-related initiative. The model was trained on satellite imagery data and achieved an accuracy of 92%.</p>
+        <p class="tech">Python, TensorFlow, Data Preprocessing, CNNs</p>
+        <div class="links">
+          <a href="#">Code</a>
+          <a href="#">Demo</a>
+        </div>
+      </div>
+      <div class="project-block">
+        <h4>Munin Visualization for VIT Chennai <span class="status">Production</span></h4>
+        <p>Utilized Plotly to analyze and visualize complex datasets (e.g., server performance, network traffic) within the Munin/VIT Chennai environment, creating informative dashboards.</p>
+        <p class="tech">Plotly, Data Analysis, Dashboard Creation, Munin</p>
+        <div class="links">
+          <a href="#">Code</a>
+          <a href="#">Demo</a>
+        </div>
+      </div>
+      <div class="project-block">
+        <h4>Game Development Portfolio <span class="status">Production</span></h4>
+        <p>Built and deployed two functional games (a 3D puzzle game and a 2D platformer), demonstrating strong command of game logic, physics implementation, and collaborative development tools.</p>
+        <p class="tech">Unity, C#, Git</p>
+        <div class="links">
+          <a href="#">Code</a>
+          <a href="#">Demo</a>
+        </div>
       </div>
     </div>
+  </section>
 
-   <section class="projects" id="projects">
-      <h1>Projects</h1>
-      <h3>Event Scheduler App</h3>
-      <p>
-        I developed a cross-platform mobile application using <strong>Flutter</strong> 
-        and <strong>Dart</strong>, 
-        with <strong>Firebase</strong> as the backend. 
-        The app helps users stay informed about upcoming events by 
-        providing real-time access to schedules, timings,
-         and event details.
-      </p>
-      <p>
-        This project reflects my ability to build scalable, user-centric solutions that solve real-world problems. 
-        It’s especially useful for communities, campuses, or organizations that host frequent events and need a 
-        reliable way to communicate updates.
-      </p>
-    </section>
+  <section id="skills" class="skills">
+    <h1>Skills</h1>
+    <p>Frontend, Backend, UI/UX, Cybersecurity, AI/ML, Data Visualization, Game Development</p>
+    <div class="skill-icons">
+      <img src="https://cdn.simpleicons.org/react/00fff2" alt="React">
+      <img src="https://cdn.simpleicons.org/nodedotjs/00fff2" alt="Node.js">
+      <img src="https://cdn.simpleicons.org/mongodb/00fff2" alt="MongoDB">
+      <img src="https://cdn.simpleicons.org/python/00fff2" alt="Python">
+      <img src="https://cdn.simpleicons.org/tensorflow/00fff2" alt="TensorFlow">
+      <img src="https://cdn.simpleicons.org/pytorch/00fff2" alt="PyTorch">
+      <img src="https://cdn.simpleicons.org/plotly/00fff2" alt="Plotly">
+      <img src="https://cdn.simpleicons.org/unity/00fff2" alt="Unity">
+      <img src="https://cdn.simpleicons.org/kalilinux/00fff2" alt="Kali Linux">
+      <img src="https://cdn.simpleicons.org/git/00fff2" alt="Git">
+      <img src="https://cdn.simpleicons.org/figma/00fff2" alt="Figma">
+    </div>
+  </section>
 
-   <section class="skills" id="skills">
-      <h1>Skills</h1>
-      <ul>
-        <li>Frontend: HTML, CSS, JavaScript, Flutter</li>
-        <li>Backend: Firebase, Node.js, Supabase</li>
-        <li>UI/UX: Figma, Responsive Design, Canva</li>
-        <li>Languages: Python, C, Dart, JavaScript, Java, HTML, CSS</li>
-      </ul>
-      <div>
-        <img src="https://cdn.simpleicons.org/python/003B57" alt="Python">
-        <img src="https://cdn.simpleicons.org/c/003B57" alt="C">
-        <img src="https://cdn.simpleicons.org/javascript/003B57" alt="JavaScript">
-        <img src="https://cdn.simpleicons.org/html5/003B57" alt="HTML5">
-        <img src="https://cdn.simpleicons.org/css/003B57" alt="CSS3">
-        <img src="https://cdn.simpleicons.org/firebase/003B57" alt="Firebase">
-        <img src="https://cdn.simpleicons.org/supabase/003B57" alt="Supabase">
-        <img src="https://cdn.simpleicons.org/git/003B57" alt="Git">
-        <img src="https://cdn.simpleicons.org/figma/003B57" alt="Figma">
-        <img src="https://cdn.simpleicons.org/flutter/003B57" alt="Flutter">
-      </div>
-    </section>
-  </main>
+  <footer id="contact">
+    <p>&copy; 2025 Sravya Isukapatla | All Rights Reserved</p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/sravya-isukapatla-07776329b" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/1651-user" target="_blank">
+        <img src="https://cdn.simpleicons.org/github/white" alt="GitHub">
+      </a>
+      <a href="mailto:sravyaisukapatla@gmail.com">
+        <img src="https://cdn.simpleicons.org/gmail/white" alt="Gmail">
+      </a>
+    </div>
+  </footer>
 
- <footer class="skills-footer child">
-  <p>&copy; 2025 Sravya Isukapatla | <a href="#">All Rights Reserved.</a></p>
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/in/sravya-isukapatla-07776329b" target="_blank">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn">
-    </a>
-    <a href="https://github.com/1651-user" target="_blank">
-      <img src="https://cdn.simpleicons.org/github/white" alt="GitHub">
-    </a>
-    <a href="mailto:sravyaisukapatla@gmail.com">
-      <img src="https://cdn.simpleicons.org/gmail/white" alt="Gmail">
-    </a>
-  </div>
-</footer>
-
-
-<script>
-  // ✨ Typing effect with line breaks
-  const text = "Hello,\nThis is Sravya Isukapatla\nA Frontend Developer,\na Computer Science Enthusiast";
-  let i = 0;
-
-  function typeLine() {
-    if (i < text.length) {
-      const char = text.charAt(i);
-      if (char === "\n") {
-        document.getElementById("typing-text").innerHTML += "<br>";
-      } else {
-        document.getElementById("typing-text").innerHTML += char;
+  <script>
+    // Typing Effect
+    const text = "Hello,\nI'm Sravya Isukapatla\nFrontend Developer 💻\nComputer Science Enthusiast 🚀";
+    let i = 0;
+    function typeLine() {
+      if (i < text.length) {
+        const char = text.charAt(i);
+        document.getElementById("typing-text").innerHTML += char === "\n" ? "<br>" : char;
+        i++;
+        setTimeout(typeLine, 70);
       }
-      i++;
-      setTimeout(typeLine, 80);
     }
-  }
 
-  // 📦 Section reveal
-  function showSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    section.classList.add("active");
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-
-  // 💻 Matrix effect
-  const canvas = document.getElementById("matrixCanvas");
-  const ctx = canvas.getContext("2d");
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
-
-  const letters = "01";
-  const fontSize = 14;
-  const columns = canvas.width / fontSize;
-  const drops = Array(Math.floor(columns)).fill(1);
-
-  function drawMatrix() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#00ffcc";
-    ctx.font = fontSize + "px monospace";
-
-    for (let j = 0; j < drops.length; j++) {
-      const text = letters.charAt(Math.floor(Math.random() * letters.length));
-      ctx.fillText(text, j * fontSize, drops[j] * fontSize);
-
-      if (drops[j] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[j] = 0;
-      }
-      drops[j]++;
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
-  }
 
-  setInterval(drawMatrix, 33);
+    // Matrix Background
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
 
-  window.onload = () => {
-    typeLine();
-    drawMatrix();
-  };
-</script>
+    const letters = "01";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#00fff2";
+      ctx.font = fontSize + "px monospace";
+
+      drops.forEach((_, j) => {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, j * fontSize, drops[j] * fontSize);
+        if (drops[j] * fontSize > canvas.height && Math.random() > 0.975) drops[j] = 0;
+        drops[j]++;
+      });
+    }
+
+    setInterval(drawMatrix, 33);
+    window.onload = () => typeLine();
+  </script>
+</body>
+</html>
