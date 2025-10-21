@@ -24,13 +24,13 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
-          Hi, I'm <span className="bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">Your Name</span>
+          <span className="text-primary">$</span> Hi, I'm <span className="text-primary">Sravya Isukapatla</span>
         </h1>
         <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-          Full Stack Developer & Creative Problem Solver
+          <span className="text-primary">&gt;</span> Frontend Developer & Designer
         </p>
         <p className="text-lg text-primary-foreground/80 mb-12 max-w-xl mx-auto">
-          Crafting elegant solutions to complex problems with modern web technologies
+          Crafting beautiful, user-centric interfaces with modern web technologies
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
