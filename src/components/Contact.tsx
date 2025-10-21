@@ -16,7 +16,7 @@ const Contact = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button variant="hero" size="lg" asChild>
-              <a href="mailto:your.email@example.com">
+              <a href="mailto:sravyaisukapatla@gmail.com">
                 <Mail className="w-5 h-5" />
                 Send Email
               </a>
@@ -25,7 +25,7 @@ const Contact = () => {
 
           <div className="flex justify-center gap-6">
             <a
-              href="https://github.com"
+              href="https://github.com/1651-user"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-card shadow-card hover:shadow-elegant flex items-center justify-center transition-smooth hover:scale-110"
@@ -33,20 +33,12 @@ const Contact = () => {
               <Github className="w-6 h-6 text-foreground" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/sravya-isukapatla-07776329b"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-card shadow-card hover:shadow-elegant flex items-center justify-center transition-smooth hover:scale-110"
             >
               <Linkedin className="w-6 h-6 text-foreground" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-card shadow-card hover:shadow-elegant flex items-center justify-center transition-smooth hover:scale-110"
-            >
-              <Twitter className="w-6 h-6 text-foreground" />
             </a>
           </div>
         </div>
