@@ -26,8 +26,11 @@ const Hero = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
           <span className="text-primary">$</span> Hi, I'm <span className="text-primary">Sravya Isukapatla</span>
         </h1>
+        <p className="text-xl md:text-2xl text-primary-foreground/90 mb-4 max-w-2xl mx-auto">
+          <span className="text-primary">&gt;</span> Frontend Developer 💻
+        </p>
         <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-          <span className="text-primary">&gt;</span> Frontend Developer & Designer
+          <span className="text-primary">&gt;</span> Computer Science Enthusiast 🚀
         </p>
         <p className="text-lg text-primary-foreground/80 mb-12 max-w-xl mx-auto">
           Crafting beautiful, user-centric interfaces with modern web technologies

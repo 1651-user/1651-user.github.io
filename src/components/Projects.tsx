@@ -3,23 +3,58 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    title: "Borderly Visa Website",
+    description: "Designed and implemented a full-stack web application for streamlined visa application, focusing on user authentication and security.",
+    tags: ["React.js", "Node.js", "MongoDB", "REST APIs"],
     github: "#",
     demo: "#",
   },
   {
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates, team features, and analytics.",
-    tags: ["React", "TypeScript", "Supabase", "Tailwind"],
+    title: "ISRO AI/ML Project",
+    description: "Developed a Machine Learning model for Satellite Image Classification that achieved an accuracy of 92%.",
+    tags: ["Python", "TensorFlow", "CNNs", "Data Preprocessing"],
     github: "#",
     demo: "#",
   },
   {
-    title: "Portfolio Website",
-    description: "Modern, responsive portfolio website with smooth animations and optimized performance.",
-    tags: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+    title: "Event Scheduler App",
+    description: "Developed a Flutter-Firebase app for real-time event updates and scheduling functionality.",
+    tags: ["Flutter", "Firebase", "Mobile Dev"],
+    github: "#",
+    demo: "#",
+  },
+  {
+    title: "NPTEL Ethical Hacking",
+    description: "Completed advanced NPTEL course, demonstrating proficiency in systematic vulnerability assessment and network defense strategies.",
+    tags: ["Pentesting", "Network Security", "Web Security"],
+    github: "#",
+    demo: "#",
+  },
+  {
+    title: "Drone Security Workshop",
+    description: "Hands-on experience in penetration testing of UAS, securing RF/MAVLink communication protocols.",
+    tags: ["Kali Linux", "UAV Protocols", "IoT Security"],
+    github: "#",
+    demo: "#",
+  },
+  {
+    title: "ONGC Internship",
+    description: "Developed a Python script that automated data logging and improved reporting time by 15% during industrial training.",
+    tags: ["Python", "Data Analysis", "SCADA", "Automation"],
+    github: "#",
+    demo: "#",
+  },
+  {
+    title: "Munin Visualization",
+    description: "Used visualization libraries to analyze and visualize complex datasets (server performance, network traffic).",
+    tags: ["Matplotlib", "Plotly", "Data Analysis", "Monitoring"],
+    github: "#",
+    demo: "#",
+  },
+  {
+    title: "Game Development",
+    description: "Built and deployed functional games (3D puzzle and 2D platformer), showcasing game logic and physics implementation.",
+    tags: ["Unity", "C#", "OOP", "Game Physics"],
     github: "#",
     demo: "#",
   },
@@ -36,17 +71,21 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elegant transition-smooth"
+              className="group bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elegant transition-smooth border border-border"
             >
-              <div className="h-48 bg-gradient-to-br from-primary to-secondary opacity-80 group-hover:opacity-100 transition-smooth"></div>
+              <div className="h-48 bg-gradient-to-br from-background to-muted flex items-center justify-center border-b border-border">
+                <span className="text-6xl text-primary font-mono">&gt;_</span>
+              </div>
               <div className="p-6">
-                <h3 className="text-2xl font-semibold mb-3 text-foreground">{project.title}</h3>
+                <h3 className="text-2xl font-semibold mb-3 text-foreground font-mono">
+                  <span className="text-primary">$</span> {project.title}
+                </h3>
                 <p className="text-muted-foreground mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 text-sm bg-muted rounded-full text-foreground"
+                      className="px-3 py-1 text-sm bg-muted rounded border border-border text-foreground font-mono"
                     >
                       {tag}
                     </span>

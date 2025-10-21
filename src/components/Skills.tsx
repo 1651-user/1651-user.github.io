@@ -1,35 +1,35 @@
-import { Code2, Palette, Rocket, Database, Globe, Zap } from "lucide-react";
+import { Code2, Palette, Shield, Database, Brain, Gamepad2 } from "lucide-react";
 
 const skills = [
   {
     icon: Code2,
     title: "Frontend Development",
-    description: "React, TypeScript, Tailwind CSS",
+    description: "React, HTML5, CSS3, JavaScript, Flutter",
   },
   {
     icon: Database,
-    title: "Backend Development",
-    description: "Node.js, PostgreSQL, APIs",
+    title: "Backend & Databases",
+    description: "Node.js, MongoDB, Firebase, REST APIs",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Figma, Responsive Design, Accessibility",
+    description: "Figma, Responsive Design, User-Centric Interfaces",
   },
   {
-    icon: Rocket,
-    title: "DevOps",
-    description: "CI/CD, Docker, Cloud Platforms",
+    icon: Brain,
+    title: "AI/ML & Data",
+    description: "Python, TensorFlow, PyTorch, Plotly, Data Visualization",
   },
   {
-    icon: Globe,
-    title: "Web Technologies",
-    description: "SEO, Performance, Progressive Web Apps",
+    icon: Shield,
+    title: "Cybersecurity",
+    description: "Kali Linux, Pentesting, Network Security, UAV Protocols",
   },
   {
-    icon: Zap,
-    title: "Problem Solving",
-    description: "Algorithms, Clean Code, Best Practices",
+    icon: Gamepad2,
+    title: "Game Development",
+    description: "Unity, C#, C++, Game Physics, OOP",
   },
 ];
 
@@ -44,12 +44,14 @@ const Skills = () => {
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="group bg-card rounded-xl p-6 shadow-card hover:shadow-elegant transition-smooth hover:-translate-y-2"
+              className="group bg-card rounded-xl p-6 shadow-card hover:shadow-elegant transition-smooth hover:-translate-y-2 border border-border"
             >
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 group-hover:scale-110 transition-bounce">
-                <skill.icon className="w-6 h-6 text-primary-foreground" />
+              <div className="w-12 h-12 rounded bg-transparent border-2 border-primary flex items-center justify-center mb-4 group-hover:bg-primary transition-smooth">
+                <skill.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-smooth" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">{skill.title}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-foreground font-mono">
+                <span className="text-primary">&gt;</span> {skill.title}
+              </h3>
               <p className="text-muted-foreground">{skill.description}</p>
             </div>
           ))}

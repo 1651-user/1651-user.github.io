@@ -6,14 +6,19 @@ const About = () => {
           About Me
         </h2>
         <div className="max-w-3xl mx-auto">
-          <div className="bg-card rounded-2xl p-8 shadow-card">
+          <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              I'm a passionate developer with a love for creating beautiful, functional, and user-friendly applications. 
-              With expertise in modern web technologies, I turn ideas into reality through clean code and thoughtful design.
+              <span className="text-primary">$</span> cat about.txt
+            </p>
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              I'm a passionate Frontend Developer and Designer with a strong foundation in Computer Science. 
+              My journey spans across web development, cybersecurity, AI/ML, and data visualization, with hands-on experience 
+              in building user-centric applications that blend functionality with beautiful design.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
-              or sharing knowledge with the developer community.
+              From developing full-stack web applications to securing drone systems and building machine learning models, 
+              I thrive on creating solutions that make a real-world impact. I believe great design isn't just about aesthetics—it's 
+              about creating intuitive experiences that users love.
             </p>
           </div>
         </div>
