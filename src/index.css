@@ -64,18 +64,18 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 0 0% 5%;
-    --foreground: 0 0% 95%;
+    --background: 0 0% 0%; /* Changed to true black */
+    --foreground: 210 10% 85%; /* Softer off-white */
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 0%; /* Changed to true black */
+    --card-foreground: 210 10% 85%; /* Softer off-white */
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 0%; /* Changed to true black */
+    --popover-foreground: 210 10% 85%; /* Softer off-white */
 
-    --primary: 210 100% 50%;
+    --primary: 195 100% 60%; /* Softer Electric Blue */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 210 100% 60%;
+    --primary-glow: 195 100% 70%; /* Softer glow */
 
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 100%;
@@ -83,7 +83,7 @@ All colors MUST be HSL.
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 210 100% 50%;
+    --accent: 195 100% 60%; /* Softer Electric Blue */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 50%;
@@ -91,20 +91,20 @@ All colors MUST be HSL.
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 210 100% 50%;
+    --ring: 195 100% 60%; /* Uses new primary */
     
     --gradient-hero: linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(0 0% 8%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 8%) 0%, hsl(0 0% 10%) 100%);
-    --shadow-elegant: 0 4px 20px hsl(210 100% 50% / 0.3);
-    --shadow-glow: 0 0 30px hsl(210 100% 50% / 0.5);
+    --shadow-elegant: 0 4px 20px hsl(195 100% 60% / 0.3); /* Uses new primary */
+    --shadow-glow: 0 0 30px hsl(195 100% 60% / 0.5); /* Uses new primary */
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary: 195 100% 60%; /* Uses new primary */
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 12%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 210 100% 50%;
+    --sidebar-ring: 195 100% 60%; /* Uses new primary */
   }
 }
 

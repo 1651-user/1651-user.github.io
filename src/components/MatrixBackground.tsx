@@ -33,11 +33,12 @@ const MatrixBackground = () => {
 
     const draw = () => {
       // Semi-transparent black background for fade effect
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Set text properties
-      ctx.fillStyle = '#0ff'; // Cyan color
+      // Updated to hex equivalent of hsl(195 100% 60%) for the matrix color
+      ctx.fillStyle = '#7AE6FF'; 
       ctx.font = `${fontSize}px monospace`;
 
       // Draw characters
@@ -49,7 +50,7 @@ const MatrixBackground = () => {
         ctx.fillText(text, x, y);
 
         // Reset drop to top randomly
-        if (y > canvas.height && Math.random() > 0.975) {
+        if (y * 0.7 > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
 
@@ -69,7 +70,7 @@ const MatrixBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 0.3 }}
+      style={{ opacity: 0.8 }} 
     />
   );
 };

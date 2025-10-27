@@ -1,14 +1,14 @@
 const About = () => {
   return (
-    <section id="about" className="py-20 gradient-subtle">
+    <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-foreground">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
           About Me
         </h2>
         <div className="max-w-3xl mx-auto">
           <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              <span className="text-primary">$</span> cat about.txt
+              <span className="text-primary"></span> 
             </p>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               I'm a passionate Frontend Developer and Designer with a strong foundation in Computer Science. 

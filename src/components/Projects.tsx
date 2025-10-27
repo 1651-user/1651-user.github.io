@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, FileText } from "lucide-react";
 
 const projects = [
   {
@@ -10,11 +10,12 @@ const projects = [
     demo: "#",
   },
   {
-    title: "ISRO AI/ML Project",
-    description: "Developed a Machine Learning model for Satellite Image Classification that achieved an accuracy of 92%.",
-    tags: ["Python", "TensorFlow", "CNNs", "Data Preprocessing"],
+    title: "AI/ML for Geodata Analysis (ISRO)",
+    description: "Attended a 5-day online course on 'AI/ML for Geodata Analysis' conducted by IIRS, ISRO, gaining practical experience in geo-data processing, analysis, and application of machine learning techniques for satellite imagery.",
+    tags: ["AI/ML", "Geospatial", "ISRO", "IIRS", "5-Day Workshop"],
     github: "#",
     demo: "#",
+    certificate: "isro_aiml.pdf",
   },
   {
     title: "Event Scheduler App",
@@ -62,9 +63,9 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 gradient-subtle">
+    <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-foreground">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
           Featured Projects
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -92,18 +93,31 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <Button variant="ghost" size="sm" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button variant="ghost" size="sm" asChild>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4" />
-                      Demo
-                    </a>
-                  </Button>
+                  {project.github && (
+                    <Button variant="ghost" size="sm" asChild>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4" />
+                        Code
+                      </a>
+                    </Button>
+                  )}
+                  {project.demo && (
+                    <Button variant="ghost" size="sm" asChild>
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4" />
+                        Demo
+                      </a>
+                    </Button>
+                  )}
+                  {/* NEW: Certificate Button */}
+                  {project.certificate && (
+                    <Button variant="ghost" size="sm" asChild>
+                      <a href={project.certificate} target="_blank" rel="noopener noreferrer">
+                        <FileText className="w-4 h-4" />
+                        Certificate
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>

@@ -7,9 +7,9 @@ import MatrixBackground from "@/components/MatrixBackground";
 
 const Index = () => {
   return (
-    <main className="min-h-screen relative">
+    <main className="min-h-screen relative dark">
       <MatrixBackground />
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         <Hero />
         <About />
         <Skills />
