@@ -18,8 +18,8 @@ const projects = [
     certificate: "isro_aiml.pdf",
   },
   {
-    title: "Event Scheduler App",
-    description: "Developed a Flutter-Firebase app for real-time event updates and scheduling functionality.",
+    title: "ONGC Internship",
+    description: "Developed a Flutter-Firebase Event Scheduler App  for real-time event updates and scheduling functionality.",
     tags: ["Flutter", "Firebase", "Mobile Dev"],
     github: "#",
     demo: "#",
@@ -38,13 +38,8 @@ const projects = [
     github: "#",
     demo: "#",
   },
-  {
-    title: "ONGC Internship",
-    description: "Developed a Python script that automated data logging and improved reporting time by 15% during industrial training.",
-    tags: ["Python", "Data Analysis", "SCADA", "Automation"],
-    github: "#",
-    demo: "#",
-  },
+  
+  
   {
     title: "Munin Visualization",
     description: "Used visualization libraries to analyze and visualize complex datasets (server performance, network traffic).",
