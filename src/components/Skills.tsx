@@ -1,4 +1,9 @@
 import { Code2, Palette, Shield, Database, Brain, Gamepad2 } from "lucide-react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
   {
@@ -34,13 +39,63 @@ const skills = [
 ];
 
 const Skills = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Set initial visibility
+    const cards = cardsRef.current?.children;
+    if (cards) {
+      gsap.set(cards, { opacity: 1 });
+    }
+    if (titleRef.current) {
+      gsap.set(titleRef.current, { opacity: 1 });
+    }
+
+    const ctx = gsap.context(() => {
+      // Animate title
+      gsap.from(titleRef.current, {
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 90%",
+          scrub: false,
+          once: true,
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+
+      // Animate skill cards
+      if (cards) {
+        gsap.from(cards, {
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 85%",
+            scrub: false,
+            once: true,
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="skills" className="py-20 bg-background">
+    <section ref={sectionRef} id="skills" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
+        <h2 ref={titleRef} className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
           Skills & Expertise
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {skills.map((skill, index) => (
             <div
               key={index}
